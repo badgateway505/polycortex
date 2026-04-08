@@ -1,0 +1,308 @@
+package scanner
+
+import (
+	"encoding/json"
+	"fmt"
+	"log/slog"
+	"strings"
+	"time"
+
+	"github.com/badgateway/poly/internal/config"
+	"github.com/badgateway/poly/internal/polymarket"
+)
+
+// LiquidityTier represents the liquidity classification of a market
+type LiquidityTier string
+
+const (
+	TierA    LiquidityTier = "A"    // High liquidity (>$50K)
+	TierB    LiquidityTier = "B"    // Moderate liquidity ($5K-$50K)
+	TierSkip LiquidityTier = "SKIP" // Too low liquidity (<$5K)
+)
+
+// FilteredMarket represents a market that passed the Golden Zone filter
+type FilteredMarket struct {
+	Market       polymarket.Market
+	YesPrice     float64
+	NoPrice      float64
+	InGoldenZone bool // True if YES or NO is in $0.20-$0.40 range
+	Tier         LiquidityTier
+	URL          string // Polymarket URL for this market
+	DaysToResolve int    // Days until market resolution
+}
+
+// MarketURL returns the Polymarket URL for a market
+func (fm FilteredMarket) MarketURL() string {
+	return fmt.Sprintf("https://polymarket.com/market/%s", fm.Market.Slug)
+}
+
+// FilterResult contains the results of the Golden Zone filter pipeline
+type FilterResult struct {
+	TotalScanned int
+	Passed       []FilteredMarket
+	Filtered     map[string]int // Reason -> Count
+	Rejects      []Rejection    // Detailed rejection log
+}
+
+// Rejection represents a market that was filtered out with the reason
+type Rejection struct {
+	MarketID   string    `json:"market_id"`
+	Question   string    `json:"question"`
+	Reason     string    `json:"reason"`
+	Layer      string    `json:"layer"` // "pre-ai" for Stage 1
+	Timestamp  time.Time `json:"timestamp"`
+	Category   string    `json:"category,omitempty"`
+	YesPrice   float64   `json:"yes_price,omitempty"`
+	NoPrice    float64   `json:"no_price,omitempty"`
+	Liquidity  float64   `json:"liquidity,omitempty"`
+	Volume24h  float64   `json:"volume_24h,omitempty"`
+	DaysLeft   int       `json:"days_left,omitempty"`
+}
+
+// Filter applies the Golden Zone filter pipeline to a list of markets
+// Stage 1: Discovery Filter (Pre-AI Cost Saver)
+// Returns markets that pass all filters, organized by liquidity tier
+func Filter(markets []polymarket.Market, cfg *config.Config, logger *slog.Logger) FilterResult {
+	if logger == nil {
+		logger = slog.Default()
+	}
+
+	result := FilterResult{
+		TotalScanned: len(markets),
+		Passed:       make([]FilteredMarket, 0),
+		Filtered:     make(map[string]int),
+		Rejects:      make([]Rejection, 0),
+	}
+
+	now := time.Now()
+
+	for _, market := range markets {
+		rejection := Rejection{
+			MarketID:  market.ID,
+			Question:  market.Question,
+			Layer:     "pre-ai",
+			Timestamp: now,
+			Category:  market.Category,
+			Liquidity: market.LiquidityNum,
+			Volume24h: market.VolumeNum,
+		}
+
+		// Parse outcome prices (stored as JSON string)
+		var prices []string
+		if err := json.Unmarshal([]byte(market.OutcomePrices), &prices); err != nil {
+			logger.Warn("failed to parse outcome prices",
+				slog.String("market_id", market.ID),
+				slog.String("error", err.Error()))
+			rejection.Reason = "parse_error"
+			recordReject(&result, rejection, cfg)
+			continue
+		}
+
+		if len(prices) != 2 {
+			logger.Warn("unexpected number of outcome prices",
+				slog.String("market_id", market.ID),
+				slog.Int("count", len(prices)))
+			rejection.Reason = "invalid_prices"
+			recordReject(&result, rejection, cfg)
+			continue
+		}
+
+		// Parse YES and NO prices
+		var yesPrice, noPrice float64
+		if _, err := fmt.Sscanf(prices[0], "%f", &yesPrice); err != nil {
+			logger.Warn("failed to parse YES price",
+				slog.String("market_id", market.ID),
+				slog.String("price", prices[0]))
+			rejection.Reason = "parse_error"
+			recordReject(&result, rejection, cfg)
+			continue
+		}
+		if _, err := fmt.Sscanf(prices[1], "%f", &noPrice); err != nil {
+			logger.Warn("failed to parse NO price",
+				slog.String("market_id", market.ID),
+				slog.String("price", prices[1]))
+			rejection.Reason = "parse_error"
+			recordReject(&result, rejection, cfg)
+			continue
+		}
+
+		rejection.YesPrice = yesPrice
+		rejection.NoPrice = noPrice
+
+		// Stale filter: endDate must be in the future and market must not be closed
+		if market.Closed {
+			rejection.Reason = "closed"
+			recordReject(&result, rejection, cfg)
+			continue
+		}
+		if market.EndDate.Before(now) {
+			rejection.Reason = "expired"
+			recordReject(&result, rejection, cfg)
+			continue
+		}
+
+		// Calculate days to resolution
+		daysToResolve := int(time.Until(market.EndDate).Hours() / 24)
+		rejection.DaysLeft = daysToResolve
+
+		// Horizon filter: 3-30 days to resolution (avoid noise/stagnation)
+		if daysToResolve < cfg.Scanner.HorizonMinDays {
+			rejection.Reason = fmt.Sprintf("horizon_too_short (<%dd)", cfg.Scanner.HorizonMinDays)
+			recordReject(&result, rejection, cfg)
+			continue
+		}
+		if daysToResolve > cfg.Scanner.HorizonMaxDays {
+			rejection.Reason = fmt.Sprintf("horizon_too_long (>%dd)", cfg.Scanner.HorizonMaxDays)
+			recordReject(&result, rejection, cfg)
+			continue
+		}
+
+		// Volume filter: volume24h ≥ $500 (avoid "ghost" markets)
+		if market.VolumeNum < cfg.Scanner.VolumeMin24h {
+			rejection.Reason = fmt.Sprintf("low_volume (<$%.0f)", cfg.Scanner.VolumeMin24h)
+			recordReject(&result, rejection, cfg)
+			continue
+		}
+
+		// Price filter: check if YES or NO is in Golden Zone ($0.20-$0.40)
+		inGoldenZone := (yesPrice >= cfg.GoldenZone.Min && yesPrice <= cfg.GoldenZone.Max) ||
+			(noPrice >= cfg.GoldenZone.Min && noPrice <= cfg.GoldenZone.Max)
+
+		if !inGoldenZone {
+			rejection.Reason = "outside_golden_zone"
+			recordReject(&result, rejection, cfg)
+			continue
+		}
+
+		// Liquidity tiering
+		tier := classifyLiquidity(market.LiquidityNum, cfg)
+		if tier == TierSkip {
+			rejection.Reason = fmt.Sprintf("low_liquidity (<$%.0f)", cfg.LiquidityTiers.TierBMin)
+			recordReject(&result, rejection, cfg)
+			continue
+		}
+
+		// Category filter: exclude low-signal categories unless Tier A
+		// Only apply if category data is available (some markets have empty category)
+		if market.Category != "" {
+			if tier != TierA && isExcludedCategory(market.Category, cfg.Scanner.ExcludedCategories) {
+				rejection.Reason = fmt.Sprintf("excluded_category (%s, not Tier A)", market.Category)
+				recordReject(&result, rejection, cfg)
+				continue
+			}
+		}
+
+		// Market passed all filters
+		filtered := FilteredMarket{
+			Market:        market,
+			YesPrice:      yesPrice,
+			NoPrice:       noPrice,
+			InGoldenZone:  true,
+			Tier:          tier,
+			URL:           fmt.Sprintf("https://polymarket.com/market/%s", market.Slug),
+			DaysToResolve: daysToResolve,
+		}
+
+		result.Passed = append(result.Passed, filtered)
+
+		logger.Info("market passed filter",
+			slog.String("market_id", market.ID),
+			slog.String("question", market.Question),
+			slog.Float64("yes_price", yesPrice),
+			slog.Float64("no_price", noPrice),
+			slog.Float64("liquidity", market.LiquidityNum),
+			slog.Float64("volume_24h", market.VolumeNum),
+			slog.Int("days_to_resolve", daysToResolve),
+			slog.String("tier", string(tier)))
+	}
+
+	return result
+}
+
+// recordReject logs a rejection and increments the filtered count
+func recordReject(result *FilterResult, rejection Rejection, cfg *config.Config) {
+	result.Filtered[rejection.Reason]++
+	if cfg.Scanner.LogRejects {
+		result.Rejects = append(result.Rejects, rejection)
+	}
+}
+
+// classifyLiquidity determines the liquidity tier for a market
+func classifyLiquidity(liquidity float64, cfg *config.Config) LiquidityTier {
+	if liquidity >= cfg.LiquidityTiers.TierAMin {
+		return TierA
+	}
+	if liquidity >= cfg.LiquidityTiers.TierBMin {
+		return TierB
+	}
+	return TierSkip
+}
+
+// isExcludedCategory checks if a category is in the excluded list
+// Case-insensitive partial matching (e.g., "Pop Culture" matches "pop")
+func isExcludedCategory(category string, excludedCategories []string) bool {
+	categoryLower := strings.ToLower(category)
+	for _, excluded := range excludedCategories {
+		if strings.Contains(categoryLower, strings.ToLower(excluded)) {
+			return true
+		}
+	}
+	return false
+}
+
+// PrintSummary prints a human-readable summary of the filter results
+func (fr FilterResult) PrintSummary() {
+	fmt.Printf("\n========== GOLDEN ZONE FILTER RESULTS ==========\n")
+	fmt.Printf("Total markets scanned: %d\n", fr.TotalScanned)
+	fmt.Printf("Passed filters: %d\n", len(fr.Passed))
+	fmt.Printf("\nFiltered out:\n")
+	for reason, count := range fr.Filtered {
+		fmt.Printf("  - %s: %d\n", reason, count)
+	}
+
+	// Count by tier
+	tierCounts := make(map[LiquidityTier]int)
+	for _, m := range fr.Passed {
+		tierCounts[m.Tier]++
+	}
+
+	fmt.Printf("\nGolden Zone markets by tier:\n")
+	if count, ok := tierCounts[TierA]; ok {
+		fmt.Printf("  - Tier A (>$50K liquidity): %d\n", count)
+	}
+	if count, ok := tierCounts[TierB]; ok {
+		fmt.Printf("  - Tier B ($5K-$50K liquidity): %d\n", count)
+	}
+
+	fmt.Printf("\n========== TIER A MARKETS (>$50K) ==========\n")
+	fmt.Printf("%-6s | %-50s | YES    | NO     | Liquidity | Days Left\n", "ID", "Question")
+	fmt.Printf("%s\n", "------|------------------------------------------------------|--------|--------|-----------|----------")
+
+	for _, m := range fr.Passed {
+		if m.Tier != TierA {
+			continue
+		}
+		q := m.Market.Question
+		if len(q) > 50 {
+			q = q[:47] + "..."
+		}
+		fmt.Printf("%-6s | %-50s | $%.3f | $%.3f | $%-8.0f | %d days\n",
+			m.Market.ID, q, m.YesPrice, m.NoPrice, m.Market.LiquidityNum, m.DaysToResolve)
+	}
+
+	fmt.Printf("\n========== TIER B MARKETS ($5K-$50K) ==========\n")
+	fmt.Printf("%-6s | %-50s | YES    | NO     | Liquidity | Days Left\n", "ID", "Question")
+	fmt.Printf("%s\n", "------|------------------------------------------------------|--------|--------|-----------|----------")
+
+	for _, m := range fr.Passed {
+		if m.Tier != TierB {
+			continue
+		}
+		q := m.Market.Question
+		if len(q) > 50 {
+			q = q[:47] + "..."
+		}
+		fmt.Printf("%-6s | %-50s | $%.3f | $%.3f | $%-8.0f | %d days\n",
+			m.Market.ID, q, m.YesPrice, m.NoPrice, m.Market.LiquidityNum, m.DaysToResolve)
+	}
+}

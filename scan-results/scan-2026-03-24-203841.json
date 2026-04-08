@@ -1,0 +1,82 @@
+[
+  {
+    "Market": {
+      "id": "540818",
+      "question": "New Playboi Carti Album before GTA VI?",
+      "slug": "new-playboi-carti-album-before-gta-vi-421",
+      "category": "",
+      "endDate": "2026-07-31T12:00:00Z",
+      "liquidityNum": 27001.9806,
+      "volumeNum": 707469.0786649984,
+      "outcomePrices": "[\"0.71\", \"0.29\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-05-02T15:06:24.136443Z"
+    },
+    "YesPrice": 0.71,
+    "NoPrice": 0.29,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/new-playboi-carti-album-before-gta-vi-421"
+  },
+  {
+    "Market": {
+      "id": "550694",
+      "question": "Will Italy qualify for the 2026 FIFA World Cup?",
+      "slug": "will-italy-qualify-for-the-2026-fifa-world-cup",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 5538.419,
+      "volumeNum": 243606.97313999967,
+      "outcomePrices": "[\"0.655\", \"0.345\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-08T02:11:19.124909Z"
+    },
+    "YesPrice": 0.655,
+    "NoPrice": 0.345,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-italy-qualify-for-the-2026-fifa-world-cup"
+  },
+  {
+    "Market": {
+      "id": "553828",
+      "question": "Will the Colorado Avalanche win the 2026 NHL Stanley Cup?",
+      "slug": "will-the-colorado-avalanche-win-the-2026-nhl-stanley-cup",
+      "category": "",
+      "endDate": "2026-06-30T00:00:00Z",
+      "liquidityNum": 233552.18603,
+      "volumeNum": 12953056.521628037,
+      "outcomePrices": "[\"0.2035\", \"0.7965\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-19T18:02:53.040259Z"
+    },
+    "YesPrice": 0.2035,
+    "NoPrice": 0.7965,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-the-colorado-avalanche-win-the-2026-nhl-stanley-cup"
+  },
+  {
+    "Market": {
+      "id": "553856",
+      "question": "Will the Oklahoma City Thunder win the 2026 NBA Finals?",
+      "slug": "will-the-oklahoma-city-thunder-win-the-2026-nba-finals",
+      "category": "",
+      "endDate": "2026-07-01T00:00:00Z",
+      "liquidityNum": 293268.6152,
+      "volumeNum": 5296918.869869953,
+      "outcomePrices": "[\"0.375\", \"0.625\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-19T18:23:27.644782Z"
+    },
+    "YesPrice": 0.375,
+    "NoPrice": 0.625,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-the-oklahoma-city-thunder-win-the-2026-nba-finals"
+  }
+]

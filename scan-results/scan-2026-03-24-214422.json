@@ -1,0 +1,482 @@
+[
+  {
+    "Market": {
+      "id": "540818",
+      "question": "New Playboi Carti Album before GTA VI?",
+      "slug": "new-playboi-carti-album-before-gta-vi-421",
+      "category": "",
+      "endDate": "2026-07-31T12:00:00Z",
+      "liquidityNum": 26980.9192,
+      "volumeNum": 707587.2952499989,
+      "outcomePrices": "[\"0.71\", \"0.29\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-05-02T15:06:24.136443Z"
+    },
+    "YesPrice": 0.71,
+    "NoPrice": 0.29,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/new-playboi-carti-album-before-gta-vi-421"
+  },
+  {
+    "Market": {
+      "id": "550694",
+      "question": "Will Italy qualify for the 2026 FIFA World Cup?",
+      "slug": "will-italy-qualify-for-the-2026-fifa-world-cup",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 6131.667,
+      "volumeNum": 243718.13701499964,
+      "outcomePrices": "[\"0.665\", \"0.335\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-08T02:11:19.124909Z"
+    },
+    "YesPrice": 0.665,
+    "NoPrice": 0.335,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-italy-qualify-for-the-2026-fifa-world-cup"
+  },
+  {
+    "Market": {
+      "id": "553828",
+      "question": "Will the Colorado Avalanche win the 2026 NHL Stanley Cup?",
+      "slug": "will-the-colorado-avalanche-win-the-2026-nhl-stanley-cup",
+      "category": "",
+      "endDate": "2026-06-30T00:00:00Z",
+      "liquidityNum": 233321.89164,
+      "volumeNum": 12953926.659448039,
+      "outcomePrices": "[\"0.2025\", \"0.7975\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-19T18:02:53.040259Z"
+    },
+    "YesPrice": 0.2025,
+    "NoPrice": 0.7975,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-the-colorado-avalanche-win-the-2026-nhl-stanley-cup"
+  },
+  {
+    "Market": {
+      "id": "553856",
+      "question": "Will the Oklahoma City Thunder win the 2026 NBA Finals?",
+      "slug": "will-the-oklahoma-city-thunder-win-the-2026-nba-finals",
+      "category": "",
+      "endDate": "2026-07-01T00:00:00Z",
+      "liquidityNum": 294356.8181,
+      "volumeNum": 5296953.518279953,
+      "outcomePrices": "[\"0.375\", \"0.625\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-19T18:23:27.644782Z"
+    },
+    "YesPrice": 0.375,
+    "NoPrice": 0.625,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-the-oklahoma-city-thunder-win-the-2026-nba-finals"
+  },
+  {
+    "Market": {
+      "id": "559652",
+      "question": "Will Gavin Newsom win the 2028 Democratic presidential nomination?",
+      "slug": "will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568",
+      "category": "",
+      "endDate": "2028-11-07T00:00:00Z",
+      "liquidityNum": 761276.9903,
+      "volumeNum": 14141736.657229835,
+      "outcomePrices": "[\"0.2405\", \"0.7595\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-03T20:36:58.88434Z"
+    },
+    "YesPrice": 0.2405,
+    "NoPrice": 0.7595,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-gavin-newsom-win-the-2028-democratic-presidential-nomination-568"
+  },
+  {
+    "Market": {
+      "id": "561365",
+      "question": "Will Cooper Flagg win the 2025–26 NBA Rookie of the Year award?",
+      "slug": "will-cooper-flagg-win-the-202526-nba-rookie-of-the-year-award",
+      "category": "",
+      "endDate": "2026-05-18T00:00:00Z",
+      "liquidityNum": 10487.5391,
+      "volumeNum": 213512.2800729998,
+      "outcomePrices": "[\"0.385\", \"0.615\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-08T22:30:37.722622Z"
+    },
+    "YesPrice": 0.385,
+    "NoPrice": 0.615,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-cooper-flagg-win-the-202526-nba-rookie-of-the-year-award"
+  },
+  {
+    "Market": {
+      "id": "561370",
+      "question": "Will Kon Knueppel win the 2025–26 NBA Rookie of the Year award?",
+      "slug": "will-kon-knueppel-win-the-202526-nba-rookie-of-the-year-award",
+      "category": "",
+      "endDate": "2026-05-18T00:00:00Z",
+      "liquidityNum": 6911.12664,
+      "volumeNum": 591500.7828360008,
+      "outcomePrices": "[\"0.613\", \"0.387\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-08T22:30:40.477565Z"
+    },
+    "YesPrice": 0.613,
+    "NoPrice": 0.387,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-kon-knueppel-win-the-202526-nba-rookie-of-the-year-award"
+  },
+  {
+    "Market": {
+      "id": "561974",
+      "question": "Will J.D. Vance win the 2028 Republican presidential nomination?",
+      "slug": "will-jd-vance-win-the-2028-republican-presidential-nomination",
+      "category": "",
+      "endDate": "2028-11-07T00:00:00Z",
+      "liquidityNum": 332003.18717,
+      "volumeNum": 6397420.50257185,
+      "outcomePrices": "[\"0.3655\", \"0.6345\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-10T16:58:03.473795Z"
+    },
+    "YesPrice": 0.3655,
+    "NoPrice": 0.6345,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-jd-vance-win-the-2028-republican-presidential-nomination"
+  },
+  {
+    "Market": {
+      "id": "561975",
+      "question": "Will Marco Rubio win the 2028 Republican presidential nomination?",
+      "slug": "will-marco-rubio-win-the-2028-republican-presidential-nomination",
+      "category": "",
+      "endDate": "2028-11-07T00:00:00Z",
+      "liquidityNum": 260029.79159,
+      "volumeNum": 6335426.273477051,
+      "outcomePrices": "[\"0.2615\", \"0.7385\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-10T16:58:03.992571Z"
+    },
+    "YesPrice": 0.2615,
+    "NoPrice": 0.7385,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-marco-rubio-win-the-2028-republican-presidential-nomination"
+  },
+  {
+    "Market": {
+      "id": "562830",
+      "question": "2026 Balance of Power: R Senate, D House",
+      "slug": "2026-balance-of-power-r-senate-d-house-444",
+      "category": "",
+      "endDate": "2026-11-03T00:00:00Z",
+      "liquidityNum": 113393.9329,
+      "volumeNum": 779217.568292999,
+      "outcomePrices": "[\"0.365\", \"0.635\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-11T20:47:54.792432Z"
+    },
+    "YesPrice": 0.365,
+    "NoPrice": 0.635,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/2026-balance-of-power-r-senate-d-house-444"
+  },
+  {
+    "Market": {
+      "id": "564194",
+      "question": "Will the Cleveland Cavaliers win the NBA Eastern Conference Finals?",
+      "slug": "will-the-cleveland-cavaliers-win-the-nba-eastern-conference-finals",
+      "category": "",
+      "endDate": "2026-06-13T00:00:00Z",
+      "liquidityNum": 84295.6686,
+      "volumeNum": 130469.92819500006,
+      "outcomePrices": "[\"0.215\", \"0.785\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-16T16:34:09.015399Z"
+    },
+    "YesPrice": 0.215,
+    "NoPrice": 0.785,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-the-cleveland-cavaliers-win-the-nba-eastern-conference-finals"
+  },
+  {
+    "Market": {
+      "id": "564200",
+      "question": "Will the Boston Celtics win the NBA Eastern Conference Finals?",
+      "slug": "will-the-boston-celtics-win-the-nba-eastern-conference-finals",
+      "category": "",
+      "endDate": "2026-06-13T00:00:00Z",
+      "liquidityNum": 62542.85042,
+      "volumeNum": 659518.0903879999,
+      "outcomePrices": "[\"0.3365\", \"0.6635\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-16T16:34:11.790149Z"
+    },
+    "YesPrice": 0.3365,
+    "NoPrice": 0.6635,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-the-boston-celtics-win-the-nba-eastern-conference-finals"
+  },
+  {
+    "Market": {
+      "id": "564218",
+      "question": "Will the San Antonio Spurs win the NBA Western Conference Finals?",
+      "slug": "will-the-san-antonio-spurs-win-the-nba-western-conference-finals",
+      "category": "",
+      "endDate": "2026-06-16T00:00:00Z",
+      "liquidityNum": 43468.60739,
+      "volumeNum": 621945.1848970008,
+      "outcomePrices": "[\"0.2215\", \"0.7785\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-16T16:50:51.538308Z"
+    },
+    "YesPrice": 0.2215,
+    "NoPrice": 0.7785,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-the-san-antonio-spurs-win-the-nba-western-conference-finals"
+  },
+  {
+    "Market": {
+      "id": "566140",
+      "question": "Will Arsenal win the 2025–26 Champions League?",
+      "slug": "will-arsenal-win-the-202526-champions-league",
+      "category": "",
+      "endDate": "2026-05-31T00:00:00Z",
+      "liquidityNum": 315054.165,
+      "volumeNum": 3369741.1013289657,
+      "outcomePrices": "[\"0.275\", \"0.725\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-21T20:58:40.858107Z"
+    },
+    "YesPrice": 0.275,
+    "NoPrice": 0.725,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-arsenal-win-the-202526-champions-league"
+  },
+  {
+    "Market": {
+      "id": "566142",
+      "question": "Will Bayern Munich win the 2025–26 Champions League?",
+      "slug": "will-bayern-munich-win-the-202526-champions-league",
+      "category": "",
+      "endDate": "2026-05-31T00:00:00Z",
+      "liquidityNum": 506337.9787,
+      "volumeNum": 3108584.473113946,
+      "outcomePrices": "[\"0.225\", \"0.775\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-21T20:58:42.094174Z"
+    },
+    "YesPrice": 0.225,
+    "NoPrice": 0.775,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-bayern-munich-win-the-202526-champions-league"
+  },
+  {
+    "Market": {
+      "id": "566227",
+      "question": "Will Real Madrid win the 2025–26 La Liga?",
+      "slug": "will-real-madrid-win-the-202526-la-liga",
+      "category": "",
+      "endDate": "2026-05-30T00:00:00Z",
+      "liquidityNum": 152499.348,
+      "volumeNum": 1790428.4346910128,
+      "outcomePrices": "[\"0.205\", \"0.795\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-21T21:26:38.180143Z"
+    },
+    "YesPrice": 0.205,
+    "NoPrice": 0.795,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-real-madrid-win-the-202526-la-liga"
+  },
+  {
+    "Market": {
+      "id": "566228",
+      "question": "Will Barcelona win the 2025–26 La Liga?",
+      "slug": "will-barcelona-win-the-202526-la-liga",
+      "category": "",
+      "endDate": "2026-05-30T00:00:00Z",
+      "liquidityNum": 94772.9436,
+      "volumeNum": 2020478.9129819972,
+      "outcomePrices": "[\"0.785\", \"0.215\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-21T21:26:38.614218Z"
+    },
+    "YesPrice": 0.785,
+    "NoPrice": 0.215,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-barcelona-win-the-202526-la-liga"
+  },
+  {
+    "Market": {
+      "id": "567560",
+      "question": "Will the next Prime Minister of Hungary be Viktor Orbán?",
+      "slug": "will-the-next-prime-minister-of-hungary-be-viktor-orbn",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 134899.6607,
+      "volumeNum": 3408853.50164701,
+      "outcomePrices": "[\"0.355\", \"0.645\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-24T21:26:35.304744Z"
+    },
+    "YesPrice": 0.355,
+    "NoPrice": 0.645,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-the-next-prime-minister-of-hungary-be-viktor-orbn"
+  },
+  {
+    "Market": {
+      "id": "567561",
+      "question": "Will the next Prime Minister of Hungary be Péter Magyar?",
+      "slug": "will-the-next-prime-minister-of-hungary-be-pter-magyar",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 167934.7964,
+      "volumeNum": 3851188.4918089597,
+      "outcomePrices": "[\"0.635\", \"0.365\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-24T21:26:35.833305Z"
+    },
+    "YesPrice": 0.635,
+    "NoPrice": 0.365,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-the-next-prime-minister-of-hungary-be-pter-magyar"
+  },
+  {
+    "Market": {
+      "id": "567687",
+      "question": "Russia x Ukraine ceasefire by end of 2026?",
+      "slug": "russia-x-ukraine-ceasefire-before-2027",
+      "category": "",
+      "endDate": "2026-12-31T00:00:00Z",
+      "liquidityNum": 377070.6464,
+      "volumeNum": 12158373.612867052,
+      "outcomePrices": "[\"0.335\", \"0.665\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-24T23:09:45.502627Z"
+    },
+    "YesPrice": 0.335,
+    "NoPrice": 0.665,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/russia-x-ukraine-ceasefire-before-2027"
+  },
+  {
+    "Market": {
+      "id": "567689",
+      "question": "Zelenskyy out as Ukraine president by end of 2026?",
+      "slug": "zelenskyy-out-as-ukraine-president-before-2027",
+      "category": "",
+      "endDate": "2026-12-31T00:00:00Z",
+      "liquidityNum": 52536.5392,
+      "volumeNum": 1943721.6627140115,
+      "outcomePrices": "[\"0.225\", \"0.775\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-24T23:14:11.033603Z"
+    },
+    "YesPrice": 0.225,
+    "NoPrice": 0.775,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/zelenskyy-out-as-ukraine-president-before-2027"
+  },
+  {
+    "Market": {
+      "id": "569343",
+      "question": "Will Iván Cepeda Castro win the 1st round of the 2026 Colombian presidential election?",
+      "slug": "will-ivn-cepeda-castro-win-the-1st-round-of-the-2026-colombian-presidential-election",
+      "category": "",
+      "endDate": "2026-05-31T16:00:00Z",
+      "liquidityNum": 14641.8918,
+      "volumeNum": 44460.310868999884,
+      "outcomePrices": "[\"0.7\", \"0.3\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-28T18:40:05.584614Z"
+    },
+    "YesPrice": 0.7,
+    "NoPrice": 0.3,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-ivn-cepeda-castro-win-the-1st-round-of-the-2026-colombian-presidential-election"
+  },
+  {
+    "Market": {
+      "id": "572121",
+      "question": "Callum Turner announced as next James Bond?",
+      "slug": "callum-turner-announced-as-next-james-bond",
+      "category": "",
+      "endDate": "2026-06-30T00:00:00Z",
+      "liquidityNum": 14077.8527,
+      "volumeNum": 101367.72478299993,
+      "outcomePrices": "[\"0.21\", \"0.79\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-08-04T22:14:42.505054Z"
+    },
+    "YesPrice": 0.21,
+    "NoPrice": 0.79,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/callum-turner-announced-as-next-james-bond"
+  },
+  {
+    "Market": {
+      "id": "572133",
+      "question": "No one announced as next James Bond?",
+      "slug": "no-one-announced-as-next-james-bond-962",
+      "category": "",
+      "endDate": "2026-06-30T00:00:00Z",
+      "liquidityNum": 19378.7617,
+      "volumeNum": 236203.17178799986,
+      "outcomePrices": "[\"0.63\", \"0.37\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-08-04T22:38:18.796577Z"
+    },
+    "YesPrice": 0.63,
+    "NoPrice": 0.37,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/no-one-announced-as-next-james-bond-962"
+  }
+]

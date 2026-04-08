@@ -1,0 +1,65 @@
+[
+  {
+    "Market": {
+      "id": "550694",
+      "question": "Will Italy qualify for the 2026 FIFA World Cup?",
+      "slug": "will-italy-qualify-for-the-2026-fifa-world-cup",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 22375.2099,
+      "volumeNum": 306531.06552900054,
+      "outcomePrices": "[\"0.745\", \"0.255\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-08T02:11:19.124909Z"
+    },
+    "YesPrice": 0.745,
+    "NoPrice": 0.255,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-italy-qualify-for-the-2026-fifa-world-cup",
+    "DaysToResolve": 15
+  },
+  {
+    "Market": {
+      "id": "550703",
+      "question": "Will Sweden qualify for the 2026 FIFA World Cup?",
+      "slug": "will-sweden-qualify-for-the-2026-fifa-world-cup",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 13863.5627,
+      "volumeNum": 139001.4369759998,
+      "outcomePrices": "[\"0.63\", \"0.37\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-08T02:11:23.243134Z"
+    },
+    "YesPrice": 0.63,
+    "NoPrice": 0.37,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-sweden-qualify-for-the-2026-fifa-world-cup",
+    "DaysToResolve": 15
+  },
+  {
+    "Market": {
+      "id": "550706",
+      "question": "Will Poland qualify for the 2026 FIFA World Cup?",
+      "slug": "will-poland-qualify-for-the-2026-fifa-world-cup",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 18362.6669,
+      "volumeNum": 485300.38505300233,
+      "outcomePrices": "[\"0.4\", \"0.6\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-08T02:11:24.580652Z"
+    },
+    "YesPrice": 0.4,
+    "NoPrice": 0.6,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-poland-qualify-for-the-2026-fifa-world-cup",
+    "DaysToResolve": 15
+  }
+]

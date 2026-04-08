@@ -1,0 +1,86 @@
+[
+  {
+    "Market": {
+      "id": "550694",
+      "question": "Will Italy qualify for the 2026 FIFA World Cup?",
+      "slug": "will-italy-qualify-for-the-2026-fifa-world-cup",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 9972.8908,
+      "volumeNum": 246426.6567989996,
+      "outcomePrices": "[\"0.65\", \"0.35\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-08T02:11:19.124909Z"
+    },
+    "YesPrice": 0.65,
+    "NoPrice": 0.35,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-italy-qualify-for-the-2026-fifa-world-cup",
+    "DaysToResolve": 17
+  },
+  {
+    "Market": {
+      "id": "550703",
+      "question": "Will Sweden qualify for the 2026 FIFA World Cup?",
+      "slug": "will-sweden-qualify-for-the-2026-fifa-world-cup",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 8784.4933,
+      "volumeNum": 126324.96102999977,
+      "outcomePrices": "[\"0.325\", \"0.675\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-08T02:11:23.243134Z"
+    },
+    "YesPrice": 0.325,
+    "NoPrice": 0.675,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-sweden-qualify-for-the-2026-fifa-world-cup",
+    "DaysToResolve": 17
+  },
+  {
+    "Market": {
+      "id": "550706",
+      "question": "Will Poland qualify for the 2026 FIFA World Cup?",
+      "slug": "will-poland-qualify-for-the-2026-fifa-world-cup",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 10395.4987,
+      "volumeNum": 471792.8472130022,
+      "outcomePrices": "[\"0.35\", \"0.65\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-08T02:11:24.580652Z"
+    },
+    "YesPrice": 0.35,
+    "NoPrice": 0.65,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-poland-qualify-for-the-2026-fifa-world-cup",
+    "DaysToResolve": 17
+  },
+  {
+    "Market": {
+      "id": "550708",
+      "question": "Will Ukraine qualify for the 2026 FIFA World Cup?",
+      "slug": "will-ukraine-qualify-for-the-2026-fifa-world-cup",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 7394.3864,
+      "volumeNum": 152184.40284600048,
+      "outcomePrices": "[\"0.265\", \"0.735\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-08T02:11:25.621854Z"
+    },
+    "YesPrice": 0.265,
+    "NoPrice": 0.735,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-ukraine-qualify-for-the-2026-fifa-world-cup",
+    "DaysToResolve": 17
+  }
+]

@@ -1,0 +1,107 @@
+[
+  {
+    "Market": {
+      "id": "550694",
+      "question": "Will Italy qualify for the 2026 FIFA World Cup?",
+      "slug": "will-italy-qualify-for-the-2026-fifa-world-cup",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 22375.2099,
+      "volumeNum": 306531.06552900054,
+      "outcomePrices": "[\"0.745\", \"0.255\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-08T02:11:19.124909Z"
+    },
+    "YesPrice": 0.745,
+    "NoPrice": 0.255,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-italy-qualify-for-the-2026-fifa-world-cup",
+    "DaysToResolve": 15
+  },
+  {
+    "Market": {
+      "id": "550703",
+      "question": "Will Sweden qualify for the 2026 FIFA World Cup?",
+      "slug": "will-sweden-qualify-for-the-2026-fifa-world-cup",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 13863.5627,
+      "volumeNum": 139001.4369759998,
+      "outcomePrices": "[\"0.63\", \"0.37\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-08T02:11:23.243134Z"
+    },
+    "YesPrice": 0.63,
+    "NoPrice": 0.37,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-sweden-qualify-for-the-2026-fifa-world-cup",
+    "DaysToResolve": 15
+  },
+  {
+    "Market": {
+      "id": "550706",
+      "question": "Will Poland qualify for the 2026 FIFA World Cup?",
+      "slug": "will-poland-qualify-for-the-2026-fifa-world-cup",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 18362.6669,
+      "volumeNum": 485300.38505300233,
+      "outcomePrices": "[\"0.4\", \"0.6\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-06-08T02:11:24.580652Z"
+    },
+    "YesPrice": 0.4,
+    "NoPrice": 0.6,
+    "InGoldenZone": true,
+    "Tier": "B",
+    "URL": "https://polymarket.com/market/will-poland-qualify-for-the-2026-fifa-world-cup",
+    "DaysToResolve": 15
+  },
+  {
+    "Market": {
+      "id": "567560",
+      "question": "Will the next Prime Minister of Hungary be Viktor Orbán?",
+      "slug": "will-the-next-prime-minister-of-hungary-be-viktor-orbn",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 140673.0579,
+      "volumeNum": 3753080.9774730126,
+      "outcomePrices": "[\"0.375\", \"0.625\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-24T21:26:35.304744Z"
+    },
+    "YesPrice": 0.375,
+    "NoPrice": 0.625,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-the-next-prime-minister-of-hungary-be-viktor-orbn",
+    "DaysToResolve": 15
+  },
+  {
+    "Market": {
+      "id": "567561",
+      "question": "Will the next Prime Minister of Hungary be Péter Magyar?",
+      "slug": "will-the-next-prime-minister-of-hungary-be-pter-magyar",
+      "category": "",
+      "endDate": "2026-04-12T00:00:00Z",
+      "liquidityNum": 183433.9066,
+      "volumeNum": 4276323.922649947,
+      "outcomePrices": "[\"0.625\", \"0.375\"]",
+      "active": true,
+      "closed": false,
+      "createdAt": "2025-07-24T21:26:35.833305Z"
+    },
+    "YesPrice": 0.625,
+    "NoPrice": 0.375,
+    "InGoldenZone": true,
+    "Tier": "A",
+    "URL": "https://polymarket.com/market/will-the-next-prime-minister-of-hungary-be-pter-magyar",
+    "DaysToResolve": 15
+  }
+]

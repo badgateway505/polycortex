@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Rain</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Golden Rain</h1>
+        <div class="scan-controls">
+            <input type="number" id="scan-limit" value="5000" min="100" max="40000" step="100">
+            <button id="btn-scan" onclick="runScan()">Scan</button>
+            <span id="scan-status"></span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Left Panel: Signal List -->
+        <aside id="signal-panel">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('alpha')">Alpha <span id="alpha-count">0</span></button>
+                <button class="tab" onclick="showTab('shadow')">Shadow <span id="shadow-count">0</span></button>
+                <button class="tab" onclick="showTab('portfolio')">Watch <span id="portfolio-count">0</span></button>
+            </div>
+            <div id="signal-list"></div>
+        </aside>
+
+        <!-- Right Panel: Signal Detail -->
+        <section id="detail-panel">
+            <div id="no-selection">
+                <p>Run a scan and select a signal to begin analysis.</p>
+            </div>
+
+            <div id="signal-detail" class="hidden">
+                <!-- Market Info -->
+                <div class="card" id="market-info"></div>
+
+                <!-- Live Monitor (shown when tracking) -->
+                <div class="card hidden" id="live-monitor">
+                    <h3>Live Monitor</h3>
+                    <div id="live-metrics">Click ▶ Track to start live monitoring</div>
+                </div>
+
+                <!-- Resolution Conditions Parser -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Resolution Conditions</h3>
+                        <button onclick="parseConditions()" id="btn-condition">Parse</button>
+                    </div>
+                    <div id="condition-results" class="results-area"></div>
+                </div>
+
+                <!-- Tavily + Exa -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>News &amp; Research</h3>
+                        <button onclick="runNewsSearch()" id="btn-tavily">Search News</button>
+                    </div>
+                    <div id="tavily-results" class="results-area"></div>
+                </div>
+
+                <!-- X / Grok Sentiment -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>𝕏 Sentiment <span id="grok-sentiment-badge"></span></h3>
+                        <button onclick="runGrok()" id="btn-grok">Search X</button>
+                    </div>
+                    <div id="grok-results" class="results-area"></div>
+                </div>
+
+                <!-- Prompts -->
+                <div class="card">
+                    <h3>Prompts</h3>
+                    <div class="prompt-row">
+                        <span>Perplexity</span>
+                        <button onclick="getPrompt('perplexity')">Generate</button>
+                        <button class="copy-btn hidden" id="copy-perplexity" onclick="copyPrompt('perplexity')">Copy</button>
+                    </div>
+                    <div class="prompt-row">
+                        <label style="display:flex;align-items:center;gap:6px;cursor:pointer">
+                            <input type="checkbox" id="pillarlab-toggle" onchange="togglePillarlab(this.checked)">
+                            <span>PillarLab</span>
+                        </label>
+                        <span class="pillarlab-ui" style="display:none">
+                            <button onclick="getPrompt('pillarlab')">Generate</button>
+                            <button class="copy-btn hidden" id="copy-pillarlab" onclick="copyPrompt('pillarlab')">Copy</button>
+                        </span>
+                    </div>
+                    <div id="prompt-preview" class="hidden">
+                        <pre id="prompt-text"></pre>
+                    </div>
+                </div>
+
+                <!-- Paste Outputs -->
+                <div class="card">
+                    <h3>Paste LLM Outputs</h3>
+                    <div class="paste-section">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+                            <label>Perplexity output:</label>
+                            <button id="btn-pplx-research" onclick="runPerplexityResearch()" style="font-size:12px;padding:3px 10px">Research</button>
+                            <span id="pplx-research-status" style="font-size:12px;color:var(--text-dim)"></span>
+                        </div>
+                        <textarea id="paste-perplexity" rows="4" placeholder="Paste Perplexity research output here, or click Research to auto-fetch..."></textarea>
+                        <button onclick="savePaste('perplexity')">Save</button>
+                        <span class="save-indicator" id="saved-perplexity"></span>
+                    </div>
+                    <div class="paste-section pillarlab-ui" style="display:none">
+                        <label>PillarLab output:</label>
+                        <textarea id="paste-pillarlab" rows="4" placeholder="Paste PillarLab JSON here..."></textarea>
+                        <button onclick="savePaste('pillarlab')">Save</button>
+                        <span class="save-indicator" id="saved-pillarlab"></span>
+                    </div>
+                </div>
+
+                <!-- Auditor -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Claude Auditor</h3>
+                        <button onclick="runAuditor()" id="btn-run-auditor">Run</button>
+                    </div>
+                    <div id="auditor-status"></div>
+                    <div id="auditor-api-results"></div>
+                </div>
+
+                <!-- Comments -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Comments <span id="comments-count" style="font-size:12px;color:var(--text-dim)"></span></h3>
+                        <div style="display:flex;align-items:center;gap:8px">
+                            <label style="display:flex;align-items:center;gap:4px;font-size:12px;cursor:pointer;color:var(--text-dim)">
+                                <input type="checkbox" id="comments-holders-only" onchange="renderComments()">
+                                Holders only
+                            </label>
+                            <button onclick="loadComments()" id="btn-comments">Load</button>
+                        </div>
+                    </div>
+                    <div id="comments-results" class="results-area"></div>
+                </div>
+
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Alert Feed Panel -->
+    <div id="alert-panel">
+        <div id="alert-panel-header">
+            <span>Alerts</span>
+            <button id="btn-clear-alerts" onclick="clearAlertFeed()" style="font-size:11px;padding:2px 6px">Clear</button>
+        </div>
+        <div id="alert-feed"></div>
+    </div>
+
+    <!-- Rule Config Modal -->
+    <div id="rule-modal" class="modal hidden">
+        <div class="modal-backdrop" onclick="closeRuleModal()"></div>
+        <div class="modal-box">
+            <div class="modal-header">
+                <span id="modal-title">Configure Rules</span>
+                <button onclick="closeRuleModal()">✕</button>
+            </div>
+            <div id="modal-body"></div>
+            <div class="modal-footer">
+                <button onclick="saveRules()">Save</button>
+                <button onclick="closeRuleModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

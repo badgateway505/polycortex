@@ -1,0 +1,132 @@
+golden_zone:
+  min: 0.20
+  max: 0.40
+
+liquidity_tiers:
+  tier_a_min: 50000  # >$50K
+  tier_b_min: 5000   # $5K-$50K
+  tier_b_lockup_pct: 0.40  # Max 40% in Tier B
+  tier_b_max_days: 30
+
+# === 4-Layer Filter Pipeline ===
+
+# Layer 1: Category Gate — Kill noise at the door
+category_gate:
+  allowed_categories:
+    - "Politics"
+    - "Crypto"
+    - "Business"
+    - "Science"
+    - "Global Affairs"
+    - "Sports"
+    - "Economics"
+
+  excluded_categories:
+    - "Pop Culture"
+    - "Meme"
+    - "Entertainment"
+
+# Layer 2: Liveness Check — Is this market alive?
+liveness:
+  min_liquidity: 1000        # $1,000 minimum total liquidity
+  min_volume_24h: 500        # $500 minimum daily volume
+
+# Layer 3: Quality Gate — Is it worth analyzing?
+quality:
+  horizon_min_days: 2        # At least 2 days to resolution
+  horizon_max_days: 60       # No more than 60 days out (theta decay handles time penalty)
+
+  # Resolution source validation (for future use)
+  authoritative_sources:
+    - "Associated Press"
+    - "AP"
+    - "Reuters"
+    - "Bloomberg"
+    - "ESPN"
+    - "NBA.com"
+    - "NFL.com"
+    - "MLB.com"
+    - "Official League Source"
+    - "U.S. Government"
+    - "Gov Portal"
+    - "Federal Reserve"
+    - "Bureau of Labor Statistics"
+    - "CoinMarketCap"
+    - "CoinGecko"
+    - "Binance"
+    - "Coinbase"
+
+# Layer 4: Distribution Engine (requires order book data from M1.3)
+distribution:
+  golden_zone_min: 0.20      # VWAP must be >= this
+  golden_zone_max: 0.40      # VWAP must be <= this
+  min_liquidity: 5000        # $5,000 minimum for Alpha
+  min_true_depth_usd: 250    # $250 within ±2% of best ask (5× default stake)
+  max_spread_pct: 3.0        # Maximum spread percentage
+  default_stake_pct: 0.05    # 5% of balance = HARD CAP
+  default_balance: 1000      # MVP balance assumption ($1,000)
+
+# === Legacy scanner config (kept for compatibility) ===
+scanner:
+  volume_min_24h: 500
+  horizon_min_days: 3
+  horizon_max_days: 30
+  excluded_categories:
+    - "Pop Culture"
+    - "Meme"
+    - "Entertainment"
+  log_rejects: true
+
+# === Position Sizing ===
+sizing:
+  kelly_fraction: 0.25
+  min_size: 5
+  max_size_pct: 0.15
+  max_positions: 5
+
+# === Theta Decay ===
+theta_decay:
+  7d: 1.00
+  14d: 0.90
+  30d: 0.75
+  60d: 0.50
+  180d: 0.25
+  default: 0.10
+
+# === Risk Management ===
+risk:
+  circuit_breaker_losses: 3
+  circuit_breaker_drawdown: 0.05
+  volatility_threshold: 0.02
+  dca_threshold: 0.05
+  dca_stop_price: 0.15
+  dca_size_fraction: 0.50
+  dca_max_entries: 3
+  slippage_tolerance: 0.03
+
+spread:
+  min_maker_profit: 0.03
+
+# === Execution ===
+execution:
+  max_cross_premium_pct: 1.0  # Software fuse: never buy above VWAP + 1%
+  graceful_shutdown:
+    cancel_tier_a_orders: true
+    keep_tier_b_orders: true
+
+# === Monitoring ===
+monitoring:
+  rebalance_interval: 30m
+  uma_check_interval: 30m
+
+# === Analysis ===
+analysis:
+  min_reanalysis_interval: 30m  # Don't re-send to Claude within this window
+  pillarlab_enabled: false      # PillarLab disabled: hallucinated standings data, burned limits for wrong probabilities
+
+# === Market Monitor ===
+market_monitor:
+  poll_safety_factor: 0.80   # Use 80% of CLOB public rate limit
+  alert_cooldown: 10m        # Same rule won't re-fire within this window per market
+  trade_buffer_size: 500     # Trades kept in memory per market
+  price_history_size: 200    # Mid-price snapshots kept per market
